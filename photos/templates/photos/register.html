@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Picsera</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    
+
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    background: #ff5f6d;
+    background: -webkit-linear-gradient(to bottom, #ff5f6d, #ffc371);
+    background: linear-gradient(to bottom, #ff5f6d, #ffc371);
+}
+.container{
+    width: 100%;
+    display: flex;
+    max-width: 850px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+.login{
+    width: 400px;
+}
+form{
+    width: 250px;
+    margin: 60px auto;
+}
+h1{
+    margin: 20px;
+    text-align: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+p{
+    text-align: center;
+    margin: 10px;
+}
+hr{
+    border-top: 2px solid tomato;
+}
+
+.pic img{
+    width: 450px;
+    height: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    object-fit: cover;
+}
+
+form label{
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+}
+input{
+    width: 100%;
+    margin: 2px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+button{
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 252px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: tomato;
+}
+button:hover{
+    background: rgba(214, 86, 64, 1);
+}
+p{
+    margin: 20px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+    
+    </style>
+</head>
+<body>
+
+
+    <div class="container p-0">
+        <div class="login">
+            <form action="{% url 'registersub' %}" method="post" class="contact-form form-validate" novalidate="novalidate">
+                {% csrf_token %}
+                <h1>Register</h1>
+                <hr>
+                <p>Welcome to Picsera !</p>
+                <label class="required-field" for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="">
+                {% comment %} <label class="required-field" for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder=""> {% endcomment %}
+                <label class="required-field" for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="">
+                <label class="required-field" for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="">
+                <button>Submit</button>
+                <p>
+                    <a href="{% url 'sign' %}">Already a user?</a>
+                </p>
+                <p>
+                    <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
+                </p>
+                
+            </form>
+        </div>
+        <div class="pic">
+            <img src="{% static 'images/an2.jpeg' %}">
+        </div>
+    </div> 
+
+</body>
+</html>
